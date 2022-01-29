@@ -1,6 +1,8 @@
-# airplanes
+# Airplanes
 
-A new Flutter project.
+A flight ticket booking application that I created to learn and implement state management BLoC in Flutter app development.
+
+![Airplanes](https://github.com/RFerdiawan/flutter_airplane_app/blob/master/assets/airplane_cover.png)
 
 ## Getting Started
 
