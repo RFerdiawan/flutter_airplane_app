@@ -37,6 +37,7 @@ class SignUpPage extends StatelessWidget {
                 height: 6,
               ),
               TextFormField(
+                style: whiteTextStyle,
                 cursorColor: kWhiteColor,
                 decoration: InputDecoration(
                   hintText: 'Your full name',
@@ -76,6 +77,7 @@ class SignUpPage extends StatelessWidget {
                 height: 6,
               ),
               TextFormField(
+                style: whiteTextStyle,
                 cursorColor: kWhiteColor,
                 decoration: InputDecoration(
                   hintText: 'Your email address',
@@ -115,6 +117,7 @@ class SignUpPage extends StatelessWidget {
                 height: 6,
               ),
               TextFormField(
+                style: whiteTextStyle,
                 obscureText: true,
                 cursorColor: kWhiteColor,
                 decoration: InputDecoration(
@@ -155,6 +158,7 @@ class SignUpPage extends StatelessWidget {
                 height: 6,
               ),
               TextFormField(
+                style: whiteTextStyle,
                 cursorColor: kWhiteColor,
                 decoration: InputDecoration(
                   hintText: 'Your hobby',
@@ -188,7 +192,9 @@ class SignUpPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(defaultRadius),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/bonus');
+            },
             child: Text(
               'Get Started',
               style: whiteTextStyle.copyWith(
@@ -215,7 +221,7 @@ class SignUpPage extends StatelessWidget {
             emailInput(),
             passwordInput(),
             hobbyInput(),
-            submitButton(),
+            submitButton()
           ],
         ),
       );
