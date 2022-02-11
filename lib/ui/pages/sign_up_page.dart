@@ -1,3 +1,4 @@
+import 'package:airplanes/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:airplanes/shared/theme.dart';
 
@@ -182,27 +183,11 @@ class SignUpPage extends StatelessWidget {
       }
 
       Widget submitButton() {
-        return Container(
-          width: double.infinity,
-          height: 55,
-          child: TextButton(
-            style: TextButton.styleFrom(
-              backgroundColor: kPrimaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(defaultRadius),
-              ),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, '/bonus');
-            },
-            child: Text(
-              'Get Started',
-              style: whiteTextStyle.copyWith(
-                fontSize: 18,
-                fontWeight: medium,
-              ),
-            ),
-          ),
+        return CustomButton(
+          title: 'Get Started',
+          onPressed: () {
+            Navigator.pushNamed(context, '/bonus');
+          },
         );
       }
 
@@ -221,7 +206,7 @@ class SignUpPage extends StatelessWidget {
             emailInput(),
             passwordInput(),
             hobbyInput(),
-            submitButton()
+            submitButton(),
           ],
         ),
       );
