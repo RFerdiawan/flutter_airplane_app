@@ -1,4 +1,5 @@
 import 'package:airplanes/shared/theme.dart';
+import 'package:airplanes/ui/pages/choose_seat_page.dart';
 import 'package:airplanes/ui/widgets/custom_button.dart';
 import 'package:airplanes/ui/widgets/interest_item.dart';
 import 'package:airplanes/ui/widgets/photo_item.dart';
@@ -225,6 +226,7 @@ class DetailPage extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: 30),
               child: Row(
                 children: [
+                  // NOTE: PRICE
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,9 +245,18 @@ class DetailPage extends StatelessWidget {
                       ],
                     ),
                   ),
+
+                  // NOTE: BOOK BTN
                   CustomButton(
                     title: 'Book Now',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChooseSeatPage(),
+                        ),
+                      );
+                    },
                     width: 170,
                   )
                 ],
