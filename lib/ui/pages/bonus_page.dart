@@ -1,6 +1,7 @@
 import 'package:airplanes/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:airplanes/shared/theme.dart';
+import 'package:lottie/lottie.dart';
 
 class BonusPage extends StatelessWidget {
   const BonusPage({Key? key}) : super(key: key);
@@ -110,12 +111,21 @@ class BonusPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Text(
-                'Big Bonus 🎉',
-                style: whiteTextStyle.copyWith(
-                  fontSize: 32,
-                  fontWeight: semiBold,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Big Bonus',
+                    style: whiteTextStyle.copyWith(
+                      fontSize: 32,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  LottieBuilder.network(
+                    'https://assets9.lottiefiles.com/packages/lf20_euoiresg.json',
+                    width: 82,
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,

@@ -3,13 +3,17 @@ import 'package:airplanes/ui/pages/bonus_page.dart';
 import 'package:airplanes/ui/pages/get_started_page.dart';
 import 'package:airplanes/ui/pages/sign_up_page.dart';
 import 'package:airplanes/ui/pages/splash_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'ui/pages/main_page.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

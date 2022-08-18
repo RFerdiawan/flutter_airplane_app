@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1000556207772",
+    "project_id": "airplane-66359",
+    "storage_bucket": "airplane-66359.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000556207772:android:d06e001343c743e9b25759",
+        "android_client_info": {
+          "package_name": "com.randyf.airplanes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000556207772-t4khm066pappu2r8eiv3opjqhmdrkn79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAnYdCTx1h-JP6F6hR9VQJYnRWmKJKCfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000556207772-t4khm066pappu2r8eiv3opjqhmdrkn79.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1000556207772-011g01dlo4s6us3fp790p6hqvk4s0hoh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.randyf.airplanes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

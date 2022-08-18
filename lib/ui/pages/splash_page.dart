@@ -48,6 +48,10 @@ class _SplashPageState extends State<SplashPage> {
                 letterSpacing: 10,
               ),
             ),
+            SizedBox(
+              height: 50,
+            ),
+            CircularProgressIndicator(color: kWhiteColor),
           ],
         ),
       ),

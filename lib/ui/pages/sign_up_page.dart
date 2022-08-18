@@ -48,6 +48,7 @@ class SignUpPage extends StatelessWidget {
 
       Widget submitButton() {
         return CustomButton(
+          margin: EdgeInsets.only(top: 10, bottom: 10),
           title: 'Get Started',
           onPressed: () {
             Navigator.pushNamed(context, '/bonus');
@@ -79,8 +80,8 @@ class SignUpPage extends StatelessWidget {
     Widget tacButton() {
       return Container(
         margin: EdgeInsets.only(
-          top: 50,
-          bottom: 73,
+          top: 40,
+          bottom: 50,
         ),
         child: TextButton(
           onPressed: () {},
