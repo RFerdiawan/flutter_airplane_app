@@ -10,4 +10,4 @@ How to run this project
 
     -  Clone this repository
     -  Open this folder on your IDE, go to terminal and type flutter pub get
-    -  Click run on your IDE
+    -  type flutter run
