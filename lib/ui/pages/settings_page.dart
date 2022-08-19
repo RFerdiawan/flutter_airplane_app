@@ -1,5 +1,8 @@
+import 'package:airplanes/cubit/auth_cubit.dart';
 import 'package:airplanes/shared/theme.dart';
+import 'package:airplanes/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -8,11 +11,35 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: Center(
-        child: Text(
-          'Settings Page',
-          style: whiteTextStyle,
-        ),
+      body: BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state is AuthSuccess) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/sign-up', (route) => false);
+          } else if (state is AuthFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: kRedColor,
+                content: Text(state.error),
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is AuthLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Center(
+              child: CustomButton(
+            width: 250,
+            onPressed: () {
+              context.read<AuthCubit>().signOut();
+            },
+            title: 'Sign Out',
+          ));
+        },
       ),
     );
   }
