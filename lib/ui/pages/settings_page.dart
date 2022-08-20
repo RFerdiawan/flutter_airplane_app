@@ -13,7 +13,7 @@ class SettingsPage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
-          if (state is AuthSuccess) {
+          if (state is AuthInitial) {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/sign-up', (route) => false);
           } else if (state is AuthFailed) {

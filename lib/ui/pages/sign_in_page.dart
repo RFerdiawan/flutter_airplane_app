@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:airplanes/shared/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({Key? key}) : super(key: key);
+class SignInPage extends StatelessWidget {
+  SignInPage({Key? key}) : super(key: key);
 
-  final TextEditingController nameController = TextEditingController(text: '');
   final TextEditingController emailController = TextEditingController(text: '');
   final TextEditingController passwordController =
       TextEditingController(text: '');
-  final TextEditingController hobbyController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class SignUpPage extends StatelessWidget {
       return Container(
         margin: EdgeInsets.only(top: 30),
         child: Text(
-          'Join us and get\nyour next journey',
+          "Sign in, and let's get\nyour next journey",
           style: whiteTextStyle.copyWith(
             fontSize: 24,
             fontWeight: semiBold,
@@ -30,14 +28,6 @@ class SignUpPage extends StatelessWidget {
     }
 
     Widget inputSection() {
-      Widget nameInput() {
-        return CustomTextFormField(
-          title: 'Full Name',
-          hintText: 'Your full name',
-          controller: nameController,
-        );
-      }
-
       Widget emailInput() {
         return CustomTextFormField(
           title: 'Email Address',
@@ -52,14 +42,6 @@ class SignUpPage extends StatelessWidget {
           hintText: 'Your password',
           obscureText: true,
           controller: passwordController,
-        );
-      }
-
-      Widget hobbyInput() {
-        return CustomTextFormField(
-          title: 'Hobby',
-          hintText: 'Your hobby',
-          controller: hobbyController,
         );
       }
 
@@ -86,14 +68,12 @@ class SignUpPage extends StatelessWidget {
             }
             return CustomButton(
               margin: EdgeInsets.only(top: 10, bottom: 10),
-              title: 'Get Started',
+              title: 'Sign In',
               onPressed: () {
-                context.read<AuthCubit>().signUp(
-                      email: emailController.text,
-                      password: passwordController.text,
-                      name: nameController.text,
-                      hobby: hobbyController.text,
-                    );
+                // context.read<AuthCubit>().signIn(
+                //       email: emailController.text,
+                //       password: passwordController.text,
+                //     );
               },
             );
           },
@@ -111,17 +91,15 @@ class SignUpPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            nameInput(),
             emailInput(),
             passwordInput(),
-            hobbyInput(),
             submitButton(),
           ],
         ),
       );
     }
 
-    Widget signInButton() {
+    Widget signUpButton() {
       return Container(
         margin: EdgeInsets.only(
           top: 20,
@@ -130,10 +108,10 @@ class SignUpPage extends StatelessWidget {
         child: TextButton(
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/sign-in', (route) => false);
+                context, '/sign-up', (route) => false);
           },
           child: Text(
-            'Have an Account? Sign In',
+            "Doesn't have an account? Sign Up",
             style: greyTextStyle.copyWith(
               fontSize: 16,
               fontWeight: light,
@@ -152,7 +130,7 @@ class SignUpPage extends StatelessWidget {
           children: [
             title(),
             inputSection(),
-            signInButton(),
+            signUpButton(),
           ],
         ),
       ),
