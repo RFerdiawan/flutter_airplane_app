@@ -1,4 +1,5 @@
 import 'package:airplanes/cubit/auth_cubit.dart';
+import 'package:airplanes/cubit/page_cubit.dart';
 import 'package:airplanes/shared/theme.dart';
 import 'package:airplanes/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,9 @@ class SettingsPage extends StatelessWidget {
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthInitial) {
+            context.read<PageCubit>().setPage(0);
             Navigator.pushNamedAndRemoveUntil(
-                context, '/sign-up', (route) => false);
+                context, '/sign-in', (route) => false);
           } else if (state is AuthFailed) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

@@ -50,7 +50,7 @@ class SignInPage extends StatelessWidget {
           listener: (context, state) {
             if (state is AuthSuccess) {
               Navigator.pushNamedAndRemoveUntil(
-                  context, '/bonus', (route) => false);
+                  context, '/main', (route) => false);
             } else if (state is AuthFailed) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -70,10 +70,10 @@ class SignInPage extends StatelessWidget {
               margin: EdgeInsets.only(top: 10, bottom: 10),
               title: 'Sign In',
               onPressed: () {
-                // context.read<AuthCubit>().signIn(
-                //       email: emailController.text,
-                //       password: passwordController.text,
-                //     );
+                context.read<AuthCubit>().signIn(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    );
               },
             );
           },

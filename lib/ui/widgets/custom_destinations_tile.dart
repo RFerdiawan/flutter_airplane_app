@@ -2,17 +2,14 @@ import 'package:airplanes/shared/theme.dart';
 import 'package:airplanes/ui/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/destination_model.dart';
+
 class CustomDestinationTile extends StatelessWidget {
-  final String name;
-  final String city;
-  final String imageUrl;
-  final double rating;
-  const CustomDestinationTile({
+  final DestinationModel destinations;
+
+  const CustomDestinationTile(
+    this.destinations, {
     Key? key,
-    required this.name,
-    required this.city,
-    required this.imageUrl,
-    this.rating = 0.0,
   }) : super(key: key);
 
   @override
@@ -45,7 +42,7 @@ class CustomDestinationTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(defaultRadius),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(imageUrl),
+                  image: NetworkImage(destinations.imageUrl),
                 ),
               ),
             ),
@@ -54,7 +51,7 @@ class CustomDestinationTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    destinations.name,
                     style: whiteTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: medium,
@@ -64,7 +61,7 @@ class CustomDestinationTile extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    city,
+                    destinations.city,
                     style: greyTextStyle.copyWith(
                       fontWeight: light,
                     ),
@@ -87,7 +84,7 @@ class CustomDestinationTile extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '$rating',
+                  '${destinations.rating}',
                   style: whiteTextStyle.copyWith(fontWeight: medium),
                 )
               ],

@@ -1,19 +1,14 @@
+import 'package:airplanes/model/destination_model.dart';
 import 'package:airplanes/shared/theme.dart';
 import 'package:airplanes/ui/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomDestinationsCard extends StatelessWidget {
-  final String name;
-  final String city;
-  final String imageUrl;
-  final double rating;
+  final DestinationModel destinations;
 
-  const CustomDestinationsCard({
+  const CustomDestinationsCard(
+    this.destinations, {
     Key? key,
-    required this.name,
-    required this.city,
-    required this.imageUrl,
-    this.rating = 0.0,
   }) : super(key: key);
 
   @override
@@ -43,7 +38,7 @@ class CustomDestinationsCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(defaultRadius),
               image: DecorationImage(
-                image: AssetImage(imageUrl),
+                image: NetworkImage(destinations.imageUrl),
               ),
             ),
             child: Align(
@@ -72,7 +67,7 @@ class CustomDestinationsCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '$rating',
+                      '${destinations.rating}',
                       style: whiteTextStyle.copyWith(fontWeight: medium),
                     )
                   ],
@@ -88,7 +83,7 @@ class CustomDestinationsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name,
+                  destinations.name,
                   style: whiteTextStyle.copyWith(
                     fontSize: 18,
                     fontWeight: medium,
@@ -98,7 +93,7 @@ class CustomDestinationsCard extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  city,
+                  destinations.city,
                   style: greyTextStyle.copyWith(fontWeight: light),
                 )
               ],
