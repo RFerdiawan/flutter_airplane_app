@@ -21,4 +21,30 @@ class DestinationCubit extends Cubit<DestinationState> {
       emit(DestinationFailed(e.toString()));
     }
   }
+
+  void fetchDestinationsBestCategories() async {
+    try {
+      emit(DestinationLoading());
+
+      List<DestinationModel> destinations =
+          await DestinationService().fetchDestinationBestCategories();
+
+      emit(DestinationSuccess(destinations));
+    } catch (e) {
+      emit(DestinationFailed(e.toString()));
+    }
+  }
+
+  void fetchDestinationsNewCategories() async {
+    try {
+      emit(DestinationLoading());
+
+      List<DestinationModel> destination =
+          await DestinationService().fetchDestinationNewCategories();
+
+      emit(DestinationSuccess(destination));
+    } catch (e) {
+      emit(DestinationFailed(e.toString()));
+    }
+  }
 }

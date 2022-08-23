@@ -1,12 +1,16 @@
+import 'package:airplanes/model/destination_model.dart';
 import 'package:airplanes/shared/theme.dart';
 import 'package:airplanes/ui/pages/choose_seat_page.dart';
 import 'package:airplanes/ui/widgets/custom_button.dart';
 import 'package:airplanes/ui/widgets/interest_item.dart';
 import 'package:airplanes/ui/widgets/photo_item.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}) : super(key: key);
+  final DestinationModel destination;
+
+  const DetailPage(this.destination, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class DetailPage extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage('assets/image_destination1.png'),
+            image: NetworkImage(destination.imageUrl),
           ),
         ),
       );
@@ -76,14 +80,14 @@ class DetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Lake Ciliwung',
+                          destination.name,
                           style: whiteTextStyle.copyWith(
                             fontSize: 24,
                             fontWeight: semiBold,
                           ),
                         ),
                         Text(
-                          'Tangerang',
+                          destination.city,
                           style: greyTextStyle.copyWith(
                             fontSize: 16,
                             fontWeight: light,
@@ -107,7 +111,7 @@ class DetailPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '4.5',
+                        destination.rating.toString(),
                         style: whiteTextStyle.copyWith(fontWeight: medium),
                       )
                     ],
@@ -145,7 +149,7 @@ class DetailPage extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    'Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
+                    destination.about,
                     style: greyTextStyle.copyWith(
                       height: 2.6,
                     ),
@@ -232,7 +236,11 @@ class DetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'IDR 2.500.000',
+                          NumberFormat.currency(
+                                  locale: 'id',
+                                  symbol: 'IDR ',
+                                  decimalDigits: 0)
+                              .format(destination.price),
                           style: whiteTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: medium,
@@ -253,7 +261,7 @@ class DetailPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ChooseSeatPage(),
+                          builder: (context) => ChooseSeatPage(destination),
                         ),
                       );
                     },

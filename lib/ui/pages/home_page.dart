@@ -18,7 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    context.read<DestinationCubit>().fetchDestinations();
+    context.read<DestinationCubit>().fetchDestinationsBestCategories();
+    context.read<DestinationCubit>().fetchDestinationsNewCategories();
     super.initState();
   }
 
@@ -88,7 +89,7 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget newDestinations(List<DestinationModel> destinations) {
+    Widget newDestinations(List<DestinationModel> newDestinations) {
       return Container(
         margin: EdgeInsets.only(
           left: defaultMargin,
@@ -107,7 +108,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Column(
-              children: destinations.map((DestinationModel e) {
+              children: newDestinations.map((DestinationModel e) {
                 return CustomDestinationTile(e);
               }).toList(),
             )
